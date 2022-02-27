@@ -22,7 +22,7 @@ public class TitleScreenController : MonoBehaviour
     }
     public void PlayGame()
     {
-        SceneManager.LoadScene("01_Start");
+        LevelFader.instance.FadeToLevel("01_Start");
     }//end of PlayGame
 
     public void SettingsMenu()

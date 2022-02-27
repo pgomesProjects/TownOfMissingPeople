@@ -15,11 +15,16 @@ public class TextController : MonoBehaviour
     private int currentDialogIndex = 0;
     private string[] messageArray = new string[]
     {
-        "This is the assistant speaking, hello and goodbye, see you next time!",
-        "Hey there!",
-        "This is a really cool and useful effect",
-        "Let's learn some code and make awesome games!",
-        "Goodbye for now!",
+        "Greetings.",
+        "You're really that desperate to find your wife, huh?",
+        "Well, I can give you a place to start.",
+        "Past the mountains, there's a small town of people.",
+        "It's an odd town, but I think they'll be able to give you the answers you're looking for.",
+        "I will say this, though.",
+        "If you decide to go there...",
+        "...",
+        "Your life will never be the same again.",
+        "Good luck. - Signed, Anonymous",
     };
 
     private void Awake()
@@ -43,7 +48,7 @@ public class TextController : MonoBehaviour
             }
             else
             {
-                SceneManager.LoadScene("02_Outside");
+                LevelFader.instance.FadeToLevel("02_Outside");
             }
         };
     }
