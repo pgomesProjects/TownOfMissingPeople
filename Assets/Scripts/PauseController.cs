@@ -11,15 +11,8 @@ public class PauseController : MonoBehaviour
     void Awake()
     {
         playerControls = new PlayerControls();
-        playerControls.Player.Pause.performed += _ => 
-        {
-            isPaused = !isPaused;
-
-            if (isPaused)
-                PauseGame();
-            else
-                ResumeGame();
-        };
+        playerControls.Player.Pause.performed += _ => TogglePause();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -44,13 +37,25 @@ public class PauseController : MonoBehaviour
         
     }
 
+    private void TogglePause()
+    {
+        isPaused = !isPaused;
+
+        if (isPaused)
+            PauseGame();
+        else
+            ResumeGame();
+    }
+
     public void PauseGame()
     {
         pauseUI.SetActive(isPaused);
+        Time.timeScale = 0.0f;
     }
 
     public void ResumeGame()
     {
         pauseUI.SetActive(isPaused);
+        Time.timeScale = 1.0f;
     }
 }
