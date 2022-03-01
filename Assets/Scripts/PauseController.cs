@@ -18,7 +18,6 @@ public class PauseController : MonoBehaviour
     void Start()
     {
         isPaused = false;
-        pauseUI.SetActive(isPaused);
     }
 
     private void OnEnable()
@@ -39,9 +38,7 @@ public class PauseController : MonoBehaviour
 
     private void TogglePause()
     {
-        isPaused = !isPaused;
-
-        if (isPaused)
+        if (!isPaused)
             PauseGame();
         else
             ResumeGame();
@@ -49,13 +46,31 @@ public class PauseController : MonoBehaviour
 
     public void PauseGame()
     {
+        isPaused = true;
         pauseUI.SetActive(isPaused);
         Time.timeScale = 0.0f;
     }
 
     public void ResumeGame()
     {
+        isPaused = false;
         pauseUI.SetActive(isPaused);
         Time.timeScale = 1.0f;
+    }
+
+    public void SettingsMenu()
+    {
+
+    }
+
+    public void ReturnToMain()
+    {
+        Time.timeScale = 1.0f;
+        LevelManager.instance.LoadScene("TitleScreen");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
