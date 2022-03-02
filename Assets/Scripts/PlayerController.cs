@@ -21,16 +21,19 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-        playerAnim.SetFloat("SpeedX", Mathf.Abs(horizontal));
+        if (!InGameManager.instance.Paused)
+        {
+            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+            playerAnim.SetFloat("SpeedX", Mathf.Abs(horizontal));
 
-        //If the input is moving the player right and the player is facing left
-        if (horizontal > 0 && !isFacingRight)
-            Flip();
+            //If the input is moving the player right and the player is facing left
+            if (horizontal > 0 && !isFacingRight)
+                Flip();
 
-        //If the input is moving the player left and the player is facing right
-        else if (horizontal < 0 && isFacingRight)
-            Flip();
+            //If the input is moving the player left and the player is facing right
+            else if (horizontal < 0 && isFacingRight)
+                Flip();
+        }
     }
 
     public void Move(InputAction.CallbackContext context)

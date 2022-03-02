@@ -6,7 +6,6 @@ public class PauseController : MonoBehaviour
 {
     [SerializeField] private GameObject pauseUI;
     private PlayerControls playerControls;
-    private bool isPaused;
 
     void Awake()
     {
@@ -17,7 +16,7 @@ public class PauseController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isPaused = false;
+        InGameManager.instance.Paused = false;
     }
 
     private void OnEnable()
@@ -38,7 +37,7 @@ public class PauseController : MonoBehaviour
 
     private void TogglePause()
     {
-        if (!isPaused)
+        if (!InGameManager.instance.Paused)
             PauseGame();
         else
             ResumeGame();
@@ -46,15 +45,15 @@ public class PauseController : MonoBehaviour
 
     public void PauseGame()
     {
-        isPaused = true;
-        pauseUI.SetActive(isPaused);
+        InGameManager.instance.Paused = true;
+        pauseUI.SetActive(InGameManager.instance.Paused);
         Time.timeScale = 0.0f;
     }
 
     public void ResumeGame()
     {
-        isPaused = false;
-        pauseUI.SetActive(isPaused);
+        InGameManager.instance.Paused = false;
+        pauseUI.SetActive(InGameManager.instance.Paused);
         Time.timeScale = 1.0f;
     }
 

@@ -13,19 +13,8 @@ public class TextController : MonoBehaviour
     private PlayerControls playerControls;
 
     private int currentDialogIndex = 0;
-    private string[] messageArray = new string[]
-    {
-        "Greetings.",
-        "You're really that desperate to find your wife, huh?",
-        "Well, I can give you a place to start.",
-        "Past the mountains, there's a small town of people.",
-        "It's an odd town, but I think they'll be able to give you the answers you're looking for.",
-        "I will say this, though.",
-        "If you decide to go there...",
-        "...",
-        "Your life will never be the same again.",
-        "Good luck. - Signed, Anonymous",
-    };
+    public string[] dialogLines;
+    public GameObject continueObject;
 
     private void Awake()
     {
@@ -39,15 +28,17 @@ public class TextController : MonoBehaviour
                 //Currently active TextWriter
                 textWriterSingle.WriteAllAndDestroy();
             }
-            else if (currentDialogIndex < messageArray.Length)
+            else if (currentDialogIndex < dialogLines.Length)
             {
-                string message = messageArray[currentDialogIndex];
+                string message = dialogLines[currentDialogIndex];
                 currentDialogIndex++;
                 StartTalkingSound();
+                continueObject.SetActive(false);
                 textWriterSingle = TextWriter.AddWriter_Static(messageText, message, .05f, true, true, StopTalkingSound);
             }
             else
             {
+                continueObject.SetActive(false);
                 LevelFader.instance.FadeToLevel("02_Outside");
             }
         };
@@ -56,9 +47,10 @@ public class TextController : MonoBehaviour
     private void Start()
     {
         //Message on start
-        string message = messageArray[currentDialogIndex];
+        string message = dialogLines[currentDialogIndex];
         currentDialogIndex++;
         StartTalkingSound();
+        continueObject.SetActive(false);
         textWriterSingle = TextWriter.AddWriter_Static(messageText, message, .05f, true, true, StopTalkingSound);
     }
 
@@ -70,6 +62,7 @@ public class TextController : MonoBehaviour
     private void StopTalkingSound()
     {
         talkingAudioSource.Stop();
+        continueObject.SetActive(true);
     }
 
     private void OnEnable()
