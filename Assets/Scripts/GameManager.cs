@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InGameManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    public static InGameManager instance;
+    public static GameManager instance;
     [HideInInspector]
     public bool Paused;
 

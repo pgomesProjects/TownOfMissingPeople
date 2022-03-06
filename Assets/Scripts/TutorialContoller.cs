@@ -45,7 +45,7 @@ public class TutorialContoller : MonoBehaviour
 
     public void CheckController(InputUser user, InputUserChange change, InputDevice device)
     {
-        if (!InGameManager.instance.Paused)
+        if (!GameManager.instance.Paused)
         {
             Debug.Log(change);
 

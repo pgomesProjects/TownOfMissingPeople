@@ -16,7 +16,7 @@ public class PauseController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InGameManager.instance.Paused = false;
+        GameManager.instance.Paused = false;
     }
 
     private void OnEnable()
@@ -37,7 +37,7 @@ public class PauseController : MonoBehaviour
 
     private void TogglePause()
     {
-        if (!InGameManager.instance.Paused)
+        if (!GameManager.instance.Paused)
             PauseGame();
         else
             ResumeGame();
@@ -45,15 +45,15 @@ public class PauseController : MonoBehaviour
 
     public void PauseGame()
     {
-        InGameManager.instance.Paused = true;
-        pauseUI.SetActive(InGameManager.instance.Paused);
+        GameManager.instance.Paused = true;
+        pauseUI.SetActive(GameManager.instance.Paused);
         Time.timeScale = 0.0f;
     }
 
     public void ResumeGame()
     {
-        InGameManager.instance.Paused = false;
-        pauseUI.SetActive(InGameManager.instance.Paused);
+        GameManager.instance.Paused = false;
+        pauseUI.SetActive(GameManager.instance.Paused);
         Time.timeScale = 1.0f;
     }
 

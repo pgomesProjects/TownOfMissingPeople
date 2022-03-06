@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!InGameManager.instance.Paused)
+        if (!GameManager.instance.Paused)
         {
             rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
             playerAnim.SetFloat("SpeedX", Mathf.Abs(horizontal));
