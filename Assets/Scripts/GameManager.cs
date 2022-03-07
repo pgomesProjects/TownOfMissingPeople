@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     [HideInInspector]
     public bool Paused;
+    [HideInInspector]
+    public bool interactionActive = false;
 
     void Awake()
     {

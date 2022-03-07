@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
 
-public class TutorialContoller : MonoBehaviour
+public class TutorialController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI textObject;
     [SerializeField] private string keyboardText;
@@ -47,7 +47,7 @@ public class TutorialContoller : MonoBehaviour
     {
         if (!GameManager.instance.Paused)
         {
-            Debug.Log(change);
+            //Debug.Log(change);
 
             switch (change)
             {

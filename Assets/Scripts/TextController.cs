@@ -34,7 +34,18 @@ public class TextController : MonoBehaviour
                 currentDialogIndex++;
                 StartTalkingSound();
                 continueObject.SetActive(false);
-                textWriterSingle = TextWriter.AddWriter_Static(messageText, message, .05f, true, true, StopTalkingSound);
+                switch (currentDialogIndex)
+                {
+                    case 9:
+                        textWriterSingle = TextWriter.AddWriter_Static(ChangeToRed, messageText, message, .05f, true, true, StopTalkingSound);
+                        break;
+                    case 10:
+                        textWriterSingle = TextWriter.AddWriter_Static(ChangeToWhite, messageText, message, .05f, true, true, StopTalkingSound);
+                        break;
+                    default:
+                        textWriterSingle = TextWriter.AddWriter_Static(null, messageText, message, .05f, true, true, StopTalkingSound);
+                        break;
+                }
             }
             else
             {
@@ -51,7 +62,7 @@ public class TextController : MonoBehaviour
         currentDialogIndex++;
         StartTalkingSound();
         continueObject.SetActive(false);
-        textWriterSingle = TextWriter.AddWriter_Static(messageText, message, .05f, true, true, StopTalkingSound);
+        textWriterSingle = TextWriter.AddWriter_Static(null, messageText, message, .05f, true, true, StopTalkingSound);
     }
 
     private void StartTalkingSound()
@@ -63,6 +74,16 @@ public class TextController : MonoBehaviour
     {
         talkingAudioSource.Stop();
         continueObject.SetActive(true);
+    }
+
+    private void ChangeToRed()
+    {
+        messageText.color = new Color32(255, 0, 0, 255);
+    }
+
+    private void ChangeToWhite()
+    {
+        messageText.color = new Color32(255, 255, 255, 255);
     }
 
     private void OnEnable()

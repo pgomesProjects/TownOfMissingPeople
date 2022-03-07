@@ -37,7 +37,7 @@ public class PauseController : MonoBehaviour
 
     private void TogglePause()
     {
-        if (!GameManager.instance.Paused)
+        if (!GameManager.instance.Paused && !GameManager.instance.interactionActive)
             PauseGame();
         else
             ResumeGame();

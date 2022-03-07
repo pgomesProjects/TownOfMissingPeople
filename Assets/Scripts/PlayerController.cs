@@ -10,6 +10,14 @@ public class PlayerController : MonoBehaviour
     private float speed = 8f;
     private Rigidbody2D rb;
     private bool isFacingRight = true;
+    private NPCController currentNPC;
+    private PlayerControls playerControls;
+
+    private void Awake()
+    {
+        playerControls = new PlayerControls();
+        playerControls.Player.Interact.performed += _ => PlayerInteract();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -18,10 +26,20 @@ public class PlayerController : MonoBehaviour
         playerAnim = GetComponent<Animator>();
     }
 
+    private void OnEnable()
+    {
+        playerControls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerControls.Disable();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.instance.Paused)
+        if (!GameManager.instance.Paused && !GameManager.instance.interactionActive)
         {
             rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
             playerAnim.SetFloat("SpeedX", Mathf.Abs(horizontal));
@@ -41,6 +59,20 @@ public class PlayerController : MonoBehaviour
         horizontal = context.ReadValue<Vector2>().x;
     }
 
+    public void PlayerInteract()
+    {
+        Debug.Log("Interact Button Called!");
+
+        if(currentNPC != null && !GameManager.instance.interactionActive)
+        {
+            Debug.Log("NPC Interaction Start!");
+            GameManager.instance.interactionActive = true;
+            rb.velocity = new Vector2(0, rb.velocity.y);
+            playerAnim.SetFloat("SpeedX", 0);
+            currentNPC.StartDialog();
+        }
+    }
+
     private void Flip()
     {
         // Switch the way the player is labelled as facing.
@@ -50,5 +82,21 @@ public class PlayerController : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("NPC"))
+        {
+            currentNPC = collision.GetComponentInChildren<NPCController>();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("NPC"))
+        {
+            currentNPC = null;
+        }
     }
 }

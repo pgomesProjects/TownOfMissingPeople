@@ -16,16 +16,16 @@ public class TextWriter : MonoBehaviour
         textWriterSingleList = new List<TextWriterSingle>();   
     }
 
-    public static TextWriterSingle AddWriter_Static(TextMeshProUGUI uiText, string dialog, float timePerChar, bool invisibleCharacters, bool removeWriterBeforeAdd, Action onComplete)
+    public static TextWriterSingle AddWriter_Static(Action onBegin, TextMeshProUGUI uiText, string dialog, float timePerChar, bool invisibleCharacters, bool removeWriterBeforeAdd, Action onComplete)
     {
         if (removeWriterBeforeAdd)
             instance.RemoveWriter(uiText);
-        return instance.AddWriter(uiText, dialog, timePerChar, invisibleCharacters, onComplete);
+        return instance.AddWriter(onBegin, uiText, dialog, timePerChar, invisibleCharacters, onComplete);
     }
 
-    private TextWriterSingle AddWriter(TextMeshProUGUI uiText, string dialog, float timePerChar, bool invisibleCharacters, Action onComplete)
+    private TextWriterSingle AddWriter(Action onBegin, TextMeshProUGUI uiText, string dialog, float timePerChar, bool invisibleCharacters, Action onComplete)
     {
-        TextWriterSingle textWriterSingle = new TextWriterSingle(uiText, dialog, timePerChar, invisibleCharacters, onComplete);
+        TextWriterSingle textWriterSingle = new TextWriterSingle(onBegin, uiText, dialog, timePerChar, invisibleCharacters, onComplete);
         textWriterSingleList.Add(textWriterSingle);
         return textWriterSingle;
     }
@@ -65,6 +65,7 @@ public class TextWriter : MonoBehaviour
     */
     public class TextWriterSingle
     {
+        private Action onBegin;
         private TextMeshProUGUI uiText;
         private string dialog;
         private int charIndex;
@@ -72,14 +73,19 @@ public class TextWriter : MonoBehaviour
         private float timer;
         private bool invisibleCharacters;
         private Action onComplete;
-        public TextWriterSingle(TextMeshProUGUI uiText, string dialog, float timePerChar, bool invisibleCharacters, Action onComplete)
+        public TextWriterSingle(Action onBegin, TextMeshProUGUI uiText, string dialog, float timePerChar, bool invisibleCharacters, Action onComplete)
         {
+            this.onBegin = onBegin;
             this.uiText = uiText;
             this.dialog = dialog;
             this.timePerChar = timePerChar;
             this.invisibleCharacters = invisibleCharacters;
             this.onComplete = onComplete;
             charIndex = 0;
+
+            //Run onBegin Action at the start
+            if (this.onBegin != null) onBegin();
+
         }//end of Constructor
 
         //Returns true on completion
