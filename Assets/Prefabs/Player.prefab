@@ -201,6 +201,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 315347fe-cc2c-4f98-923d-30606730c41f
     m_ActionName: Player/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f1308b22-0a1c-4707-8254-5f01a49c2764
+    m_ActionName: Player/Interact[/Keyboard/e,/DualShock4GamepadHID/buttonNorth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PauseController : MonoBehaviour
 {
     [SerializeField] private GameObject pauseUI;
     private PlayerControls playerControls;
+    private Button primaryButton;
 
     void Awake()
     {

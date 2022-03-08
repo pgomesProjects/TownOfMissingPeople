@@ -31,10 +31,9 @@ public class LevelFader : MonoBehaviour
 
     public void FadeToLevel(string levelName)
     {
-        Debug.Log("Fading Out...");
         levelToLoad = levelName;
 
-        if(fadeOutSeconds == 0)
+        if (fadeOutSeconds == 0)
         {
             animator.CrossFade("fade_out", 0f, 0, 1f);
         }
@@ -46,6 +45,7 @@ public class LevelFader : MonoBehaviour
 
     public void OnFadeComplete()
     {
+        GameManager.instance.interactionActive = false;
         LevelManager.instance.LoadScene(levelToLoad);
     }
 }

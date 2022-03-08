@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private float speed = 8f;
     private Rigidbody2D rb;
     private bool isFacingRight = true;
-    private NPCController currentNPC;
+    private GameObject currentObject;
     private PlayerControls playerControls;
 
     private void Awake()
@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
     {
         if (!GameManager.instance.Paused && !GameManager.instance.interactionActive)
         {
+            horizontal = playerControls.Player.Move.ReadValue<Vector2>().x;
+
             rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
             playerAnim.SetFloat("SpeedX", Mathf.Abs(horizontal));
 
@@ -54,22 +56,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Move(InputAction.CallbackContext context)
-    {
-        horizontal = context.ReadValue<Vector2>().x;
-    }
-
     public void PlayerInteract()
     {
         Debug.Log("Interact Button Called!");
 
-        if(currentNPC != null && !GameManager.instance.interactionActive)
+        if(currentObject != null && !GameManager.instance.interactionActive)
         {
-            Debug.Log("NPC Interaction Start!");
-            GameManager.instance.interactionActive = true;
-            rb.velocity = new Vector2(0, rb.velocity.y);
-            playerAnim.SetFloat("SpeedX", 0);
-            currentNPC.StartDialog();
+            if (currentObject.CompareTag("LevelLoader"))
+            {
+                GameManager.instance.interactionActive = true;
+                rb.velocity = new Vector2(0, rb.velocity.y);
+                playerAnim.SetFloat("SpeedX", 0);
+                currentObject.GetComponentInChildren<NewLevelController>().LoadToNextLevel();
+            }
+
+            if (currentObject.CompareTag("NPC"))
+            {
+                Debug.Log("NPC Interaction Start!");
+                GameManager.instance.interactionActive = true;
+                rb.velocity = new Vector2(0, rb.velocity.y);
+                playerAnim.SetFloat("SpeedX", 0);
+                currentObject.GetComponentInChildren<NPCController>().StartDialog();
+            }
         }
     }
 
@@ -86,17 +94,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("NPC"))
-        {
-            currentNPC = collision.GetComponentInChildren<NPCController>();
-        }
+        currentObject = collision.gameObject;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("NPC"))
-        {
-            currentNPC = null;
-        }
+        currentObject = collision.gameObject;
     }
 }

@@ -14,4 +14,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/02_Outside.unity
     guid: 17263edb15a0ed34bb1f3e5694af2104
-  m_configObjects: {}
+  - enabled: 1
+    path: Assets/Scenes/03_Library.unity
+    guid: 867b72e852edf344cb720af40a42bc20
+  - enabled: 1
+    path: Assets/Scenes/04_Diner.unity
+    guid: 0a88b9d639e44f342841981ffac26a9c
+  - enabled: 1
+    path: Assets/Scenes/05_Motel.unity
+    guid: bdaa52f35ba3c1b4da6bb819eb45ac63
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 9aaf7676a6ccc4d46aaecdcaea775291, type: 2}

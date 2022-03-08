@@ -1,6 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
+using UnityEngine.InputSystem.Users;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,7 +12,12 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool Paused;
     [HideInInspector]
+    public bool userInputChanged = false;
+    [HideInInspector]
     public bool interactionActive = false;
+
+    public enum CurrentController { NONE, KEYBOARD, CONTROLLER };
+    public CurrentController currentControlScheme = CurrentController.NONE;
 
     void Awake()
     {
@@ -19,12 +28,6 @@ public class GameManager : MonoBehaviour
         }
         else
             Destroy(gameObject);
-
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
