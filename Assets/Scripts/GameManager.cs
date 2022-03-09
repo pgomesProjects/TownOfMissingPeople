@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public bool interactionActive = false;
 
     public enum CurrentController { NONE, KEYBOARD, CONTROLLER };
-    public CurrentController currentControlScheme = CurrentController.NONE;
+    public CurrentController currentControlScheme = CurrentController.KEYBOARD;
 
     void Awake()
     {
