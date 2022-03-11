@@ -1,89 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
+[RequireComponent(typeof(TextWriter))]
 public class TextController : MonoBehaviour
 {
-    private TextMeshProUGUI messageText;
     private TextWriter.TextWriterSingle textWriterSingle;
-    private AudioSource talkingAudioSource;
     private PlayerControls playerControls;
+    private DialogEvent dialogEvent;
+    private bool isDialogActive;
 
-    private int currentDialogIndex = 0;
-    public string[] dialogLines;
-    public GameObject continueObject;
+    public bool playOnStart;
 
     private void Awake()
     {
-        messageText = transform.Find("Dialog").Find("DialogText").GetComponent<TextMeshProUGUI>();
-        talkingAudioSource = transform.Find("Dialog").GetComponent<AudioSource>();
+        isDialogActive = false;
+        dialogEvent = GetComponent<DialogEvent>();
         playerControls = new PlayerControls();
         playerControls.UI.Click.performed += _ =>
         {
-            if (textWriterSingle != null && textWriterSingle.IsActive())
+            //If the dialog is activated
+            if (isDialogActive)
             {
-                //Currently active TextWriter
-                textWriterSingle.WriteAllAndDestroy();
-            }
-            else if (currentDialogIndex < dialogLines.Length)
-            {
-                string message = dialogLines[currentDialogIndex];
-                currentDialogIndex++;
-                StartTalkingSound();
-                continueObject.SetActive(false);
-                switch (currentDialogIndex)
-                {
-                    case 9:
-                        textWriterSingle = TextWriter.AddWriter_Static(ChangeToRed, messageText, message, .05f, true, true, StopTalkingSound);
-                        break;
-                    case 10:
-                        textWriterSingle = TextWriter.AddWriter_Static(ChangeToWhite, messageText, message, .05f, true, true, StopTalkingSound);
-                        break;
-                    default:
-                        textWriterSingle = TextWriter.AddWriter_Static(null, messageText, message, .05f, true, true, StopTalkingSound);
-                        break;
-                }
-            }
-            else
-            {
-                continueObject.SetActive(false);
-                LevelFader.instance.FadeToLevel("02_Outside");
+                //If there is text being written already, write everything
+                if (textWriterSingle != null && textWriterSingle.IsActive())
+                    textWriterSingle.WriteAllAndDestroy();
+
+                //If there is no text and there are still lines left, check for events needed to display the text
+                else if (dialogEvent.GetCurrentLine() < dialogEvent.GetDialogLength())
+                    dialogEvent.CheckEvents(ref textWriterSingle);
+
+                //If all of the text has been shown, call the event for when the text is complete
+                else
+                    dialogEvent.OnEventComplete();
             }
         };
     }
-
     private void Start()
     {
-        //Message on start
-        string message = dialogLines[currentDialogIndex];
-        currentDialogIndex++;
-        StartTalkingSound();
-        continueObject.SetActive(false);
-        textWriterSingle = TextWriter.AddWriter_Static(null, messageText, message, .05f, true, true, StopTalkingSound);
+        //If the dialog is meant to be played at the start, trigger it immediately
+        if (playOnStart)
+            TriggerDialogEvent();
     }
 
-    private void StartTalkingSound()
+    public void TriggerDialogEvent()
     {
-        talkingAudioSource.Play();
-    }
-
-    private void StopTalkingSound()
-    {
-        talkingAudioSource.Stop();
-        continueObject.SetActive(true);
-    }
-
-    private void ChangeToRed()
-    {
-        messageText.color = new Color32(255, 0, 0, 255);
-    }
-
-    private void ChangeToWhite()
-    {
-        messageText.color = new Color32(255, 255, 255, 255);
+        //Start text event
+        transform.Find("DialogPanel").gameObject.SetActive(true);
+        isDialogActive = true;
+        dialogEvent.CheckEvents(ref textWriterSingle);
     }
 
     private void OnEnable()
