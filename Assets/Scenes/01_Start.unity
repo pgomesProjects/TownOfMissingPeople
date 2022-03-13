@@ -597,17 +597,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogLines:
-  - Greetings.
-  - You're really that desperate to find your wife, huh?
-  - Well, I can give you a place to start.
+  - Greetings, Callum.
+  - Yasuda Nana.
+  - You said this poster is of your missing wife, correct?
+  - ...
+  - ...I see.
+  - Such young newlyweds, but I'm in no place to judge.
+  - You must really care about Yasuda if you're desperate enough to respond to me.
+  - ...
+  - Twelve years? I guess that's a enough time to know someone well enough.
+  - I can give you a place to look. Thankfully, this place isn't far from you.
   - Past the mountains, there's a small town of people.
   - It's an odd town, but I think they'll be able to give you the answers you're
     looking for.
   - I will say this, though.
   - If you decide to go there...
-  - ...
   - Your life will never be the same again.
-  - Good luck. - Signed, Anonymous
+  - Think about this wisely before you try to find her.
+  - This is a last resort option and nothing else.
+  - Good luck. Signing Off.
+  - '[Anonymous Has Logged Out.]'
   continueObject: {fileID: 421483877}
   missingPoster: {fileID: 803508191}
 --- !u!114 &1606624807

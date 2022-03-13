@@ -25,17 +25,20 @@ public class IntroEvents : DialogEvent
 
         switch (currentLine)
         {
-            case 2:
+            case 1:
                 textWriterObj = TextWriter.AddWriter_Static(ShowPoster, messageText, message, .05f, true, true, StopTalkingSound);
                 break;
-            case 4:
+            case 10:
                 textWriterObj = TextWriter.AddWriter_Static(HidePoster, messageText, message, .05f, true, true, StopTalkingSound);
                 break;
-            case 9:
+            case 15:
                 textWriterObj = TextWriter.AddWriter_Static(ChangeToRed, messageText, message, .05f, true, true, StopTalkingSound);
                 break;
-            case 10:
+            case 16:
                 textWriterObj = TextWriter.AddWriter_Static(ChangeToWhite, messageText, message, .05f, true, true, StopTalkingSound);
+                break;
+            case 19:
+                textWriterObj = TextWriter.AddWriter_Static(ItalicizeText, messageText, message, .05f, true, true, StopTalkingSound);
                 break;
             default:
                 textWriterObj = TextWriter.AddWriter_Static(null, messageText, message, .05f, true, true, StopTalkingSound);
@@ -86,6 +89,11 @@ public class IntroEvents : DialogEvent
     private void ChangeToWhite()
     {
         messageText.color = new Color32(255, 255, 255, 255);
+    }
+
+    private void ItalicizeText()
+    {
+        messageText.fontStyle = TMPro.FontStyles.Italic;
     }
 
     public override void OnEventComplete()
