@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
     public bool userInputChanged = false;
     [HideInInspector]
     public bool interactionActive = false;
+    [HideInInspector]
+    public string playerSpawnName = "StartSpawn";
+
+    private PlayerSpawnPoint spawnManager;
 
     public enum CurrentController { NONE, KEYBOARD, CONTROLLER };
     public CurrentController currentControlScheme = CurrentController.KEYBOARD;

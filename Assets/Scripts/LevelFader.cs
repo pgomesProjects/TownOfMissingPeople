@@ -15,6 +15,7 @@ public class LevelFader : MonoBehaviour
     void Awake()
     {
         instance = this;
+
         if(fadeInSeconds == 0)
         {
             animator.CrossFade("fade_in", 0f, 0, 1f);

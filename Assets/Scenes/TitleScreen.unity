@@ -156,6 +156,7 @@ MonoBehaviour:
   Paused: 0
   userInputChanged: 0
   interactionActive: 0
+  playerSpawnName: StartSpawn
   currentControlScheme: 1
 --- !u!4 &253078259
 Transform:
