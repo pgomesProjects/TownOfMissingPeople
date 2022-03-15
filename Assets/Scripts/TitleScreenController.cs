@@ -29,8 +29,13 @@ public class TitleScreenController : MonoBehaviour
 
     public void SettingsMenu()
     {
+        //Toggle settings menu
         menuStates[(int)MenuState.SETTINGS] = !menuStates[(int)MenuState.SETTINGS];
-        Debug.Log(menuStates[(int)MenuState.SETTINGS]);
+        gameMenus[(int)MenuState.SETTINGS].SetActive(menuStates[(int)MenuState.SETTINGS]);
+
+        //Toggle main menu
+        menuStates[(int)MenuState.MAIN] = !menuStates[(int)MenuState.MAIN];
+        gameMenus[(int)MenuState.MAIN].SetActive(menuStates[(int)MenuState.MAIN]);
     }//end of SettingsMenu
 
     public void QuitGame()
