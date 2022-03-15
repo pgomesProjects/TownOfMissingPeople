@@ -9,12 +9,15 @@ public class TutorialController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textObject;
     [SerializeField] private string keyboardText;
     [SerializeField] private string controllerText;
+    [SerializeField] private GameManager.Tutorial activeTut;
 
     public float disappearTime = 3f;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (GameManager.instance.tutorialsViewed[(int)activeTut])
+            Destroy(gameObject);
         ChangeInputText();
     }
 
@@ -30,7 +33,7 @@ public class TutorialController : MonoBehaviour
     {
 
         yield return new WaitForSeconds(disappearTime);
-
+        GameManager.instance.tutorialsViewed[(int)activeTut] = true;
         Destroy(gameObject);
     }
 

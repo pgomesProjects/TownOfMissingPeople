@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class TitleScreenController : MonoBehaviour
 {
+    public GameObject[] gameMenus;
     private bool[] menuStates = {true, false};
 
     enum MenuState {MAIN, SETTINGS};

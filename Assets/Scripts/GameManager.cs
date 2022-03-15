@@ -18,6 +18,11 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public string playerSpawnName = "StartSpawn";
 
+    [HideInInspector]
+    public bool [] tutorialsViewed = { false };
+    [HideInInspector]
+    public enum Tutorial { WALKING };
+
     private PlayerSpawnPoint spawnManager;
 
     public enum CurrentController { NONE, KEYBOARD, CONTROLLER };
