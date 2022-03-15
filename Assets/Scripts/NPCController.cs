@@ -4,50 +4,43 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+[RequireComponent(typeof(TextWriter))]
 public class NPCController : MonoBehaviour
 {
-    private TextMeshProUGUI messageText;
     private TextWriter.TextWriterSingle textWriterSingle;
-    private AudioSource talkingAudioSource;
     private PlayerControls playerControls;
-
-    private bool hasVisited = false;
+    private NPCDialogEvent dialogEvent;
     private bool isTalking = false;
-
-    private int currentDialogIndex;
-    private string[] dialogLines;
-    public string[] newDialogLines;
-    public string[] visitedDialogLines;
-    public GameObject continueObject;
 
     private void Awake()
     {
-        messageText = transform.Find("Dialog").Find("DialogText").GetComponent<TextMeshProUGUI>();
-        talkingAudioSource = transform.Find("Dialog").GetComponent<AudioSource>();
+        dialogEvent = GetComponent<NPCDialogEvent>();
         playerControls = new PlayerControls();
         playerControls.UI.Click.performed += _ =>
         {
             if (isTalking)
             {
+                //If there is text being written already, write everything
                 if (textWriterSingle != null && textWriterSingle.IsActive())
-                {
-                    //Currently active TextWriter
                     textWriterSingle.WriteAllAndDestroy();
-                }
-                else if (currentDialogIndex < dialogLines.Length)
+
+                //If there is no text and there are still visited lines left, check for events needed to display the text
+                else if (dialogEvent.GetHasVisited() && (dialogEvent.GetCurrentLine() < dialogEvent.GetVisitedLinesLength()))
                 {
-                    string message = dialogLines[currentDialogIndex];
-                    currentDialogIndex++;
-                    StartTalkingSound();
-                    continueObject.SetActive(false);
-                    textWriterSingle = TextWriter.AddWriter_Static(null, messageText, message, .05f, true, true, StopTalkingSound);
+                    dialogEvent.CheckEvents(ref textWriterSingle);
                 }
+
+                //If there is no text and there are still new lines left, check for events needed to display the text
+                else if (!dialogEvent.GetHasVisited() && (dialogEvent.GetCurrentLine() < dialogEvent.GetDialogLength()))
+                {
+                    dialogEvent.CheckEvents(ref textWriterSingle);
+                }
+
+                //If all of the text has been shown, call the event for when the text is complete
                 else
                 {
-                    messageText.gameObject.SetActive(false);
-                    continueObject.SetActive(false);
                     isTalking = false;
-                    hasVisited = true;
+                    dialogEvent.OnEventComplete();
                     GameManager.instance.interactionActive = false;
                 }
             }
@@ -57,33 +50,7 @@ public class NPCController : MonoBehaviour
     public void StartDialog()
     {
         isTalking = true;
-
-        //Choose which set of lines to read from
-        if (hasVisited)
-            dialogLines = visitedDialogLines;
-        else
-            dialogLines = newDialogLines;
-
-        currentDialogIndex = 0;
-        string message = dialogLines[currentDialogIndex];
-        currentDialogIndex++;
-        StartTalkingSound();
-        
-        //Show message and hide continue object
-        messageText.gameObject.SetActive(true);
-        continueObject.SetActive(false);
-        textWriterSingle = TextWriter.AddWriter_Static(null, messageText, message, .05f, true, true, StopTalkingSound);
-    }
-
-    private void StartTalkingSound()
-    {
-        talkingAudioSource.Play();
-    }
-
-    private void StopTalkingSound()
-    {
-        talkingAudioSource.Stop();
-        continueObject.SetActive(true);
+        dialogEvent.OnDialogStart(ref textWriterSingle);
     }
 
     private void OnEnable()
