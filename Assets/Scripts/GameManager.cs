@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     [HideInInspector]
+    public GameSettings currentSettings = new GameSettings();
+    [HideInInspector]
     public bool Paused;
     [HideInInspector]
     public bool userInputChanged = false;
@@ -17,13 +19,13 @@ public class GameManager : MonoBehaviour
     public bool interactionActive = false;
     [HideInInspector]
     public string playerSpawnName = "StartSpawn";
+    [HideInInspector]
+    public string playingSongName = "";
 
     [HideInInspector]
     public bool [] tutorialsViewed = { false };
     [HideInInspector]
     public enum Tutorial { WALKING };
-
-    private PlayerSpawnPoint spawnManager;
 
     public enum CurrentController { NONE, KEYBOARD, CONTROLLER };
     public CurrentController currentControlScheme = CurrentController.KEYBOARD;
@@ -38,5 +40,9 @@ public class GameManager : MonoBehaviour
         else
             Destroy(gameObject);
     }
-
+    private void OnApplicationQuit()
+    {
+        Debug.Log("Quitting Game...");
+        PlayerPrefs.SetInt("OnApplicationOpen", 0);
+    }
 }

@@ -48,7 +48,7 @@ public class IntroEvents : DialogEvent
 
     private void StartTalkingSound()
     {
-        FindObjectOfType<AudioManager>().Play("TalkingNoise", 0.4f);
+        FindObjectOfType<AudioManager>().Play("TalkingNoise", PlayerPrefs.GetFloat("MasterVolume"));
     }
 
     private void StopTalkingSound()
