@@ -10,12 +10,12 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - BackgroundLayer
   - Water
   - UI
   - Player
   - Confiner
-  - 
+  - Post Processing
   - 
   - 
   - 
