@@ -66,7 +66,12 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 11927f6455975284e970bc8eefc2e5ea, type: 3}
     - {fileID: 2800000, guid: f04c24ee3699f724496b00982be65058, type: 3}
     - {fileID: 2800000, guid: 9c64280c80e522244a3a7e2c3f8bdd04, type: 3}
-    totalSpriteSurfaceArea: 6946816
+    - {fileID: 2800000, guid: fe4872da0e63af54198c613f1fca9efb, type: 3}
+    - {fileID: 2800000, guid: 15966d76c89145647b58a53be146dd5d, type: 3}
+    - {fileID: 2800000, guid: 72a02dfc5735d2f479989340f0fe3a97, type: 3}
+    - {fileID: 2800000, guid: 138b8aaf58fd1c34fa6d2075116e9f9a, type: 3}
+    - {fileID: 2800000, guid: 2afb68254888e3244b949bdbe5f05893, type: 3}
+    totalSpriteSurfaceArea: 7864320
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -103,6 +108,8 @@ SpriteAtlas:
   - {fileID: 1123726585228992603, guid: bb9026c3e335e2543add64800f460f1f, type: 3}
   - {fileID: 4925761604401281124, guid: bb9026c3e335e2543add64800f460f1f, type: 3}
   - {fileID: 21300000, guid: 11927f6455975284e970bc8eefc2e5ea, type: 3}
+  - {fileID: -3998054657135199421, guid: 15966d76c89145647b58a53be146dd5d, type: 3}
+  - {fileID: -4477282770066022702, guid: 15966d76c89145647b58a53be146dd5d, type: 3}
   - {fileID: -4395469659126986229, guid: 4d6c14a6874ae0b4a917b47bbb7b95d8, type: 3}
   - {fileID: 6439712450338525177, guid: 4d6c14a6874ae0b4a917b47bbb7b95d8, type: 3}
   - {fileID: 7730612777999535097, guid: 4d6c14a6874ae0b4a917b47bbb7b95d8, type: 3}
@@ -157,6 +164,12 @@ SpriteAtlas:
   - {fileID: 4843790498801682762, guid: 30dc169a2e0c6aa409c95559ba65cd53, type: 3}
   - {fileID: 21300000, guid: 8253ec9a5b928c247bd86f03704a920e, type: 3}
   - {fileID: 21300000, guid: 8e4dd6ca7e6b9ef489469d4d06dfd3c5, type: 3}
+  - {fileID: 190318190729301679, guid: fe4872da0e63af54198c613f1fca9efb, type: 3}
+  - {fileID: 9172218610271568698, guid: fe4872da0e63af54198c613f1fca9efb, type: 3}
+  - {fileID: -655741538278625843, guid: fe4872da0e63af54198c613f1fca9efb, type: 3}
+  - {fileID: 3206490988996083552, guid: fe4872da0e63af54198c613f1fca9efb, type: 3}
+  - {fileID: 4390182827091144851, guid: fe4872da0e63af54198c613f1fca9efb, type: 3}
+  - {fileID: -7820218736580296700, guid: fe4872da0e63af54198c613f1fca9efb, type: 3}
   - {fileID: 21300000, guid: 1617ac8b79b41da4aa93d55e047a87bc, type: 3}
   - {fileID: -2254059581306282288, guid: e68655db9122bf940aa265361ba48eb1, type: 3}
   - {fileID: -4978732050875228339, guid: e68655db9122bf940aa265361ba48eb1, type: 3}
@@ -166,6 +179,12 @@ SpriteAtlas:
   - {fileID: -711100685523510564, guid: cb7afaeca9a678646a6cd93576f1065d, type: 3}
   - {fileID: 4269108728175869260, guid: cb7afaeca9a678646a6cd93576f1065d, type: 3}
   - {fileID: -4261986975073480141, guid: cb7afaeca9a678646a6cd93576f1065d, type: 3}
+  - {fileID: -7507117016328437140, guid: 72a02dfc5735d2f479989340f0fe3a97, type: 3}
+  - {fileID: -5528652350257775897, guid: 72a02dfc5735d2f479989340f0fe3a97, type: 3}
+  - {fileID: 6697846350502538087, guid: 72a02dfc5735d2f479989340f0fe3a97, type: 3}
+  - {fileID: 671432340607560884, guid: 72a02dfc5735d2f479989340f0fe3a97, type: 3}
+  - {fileID: 8601535765634349984, guid: 72a02dfc5735d2f479989340f0fe3a97, type: 3}
+  - {fileID: -4233468908198836717, guid: 72a02dfc5735d2f479989340f0fe3a97, type: 3}
   - {fileID: 8525882526812193312, guid: 2f9503bdb59c4d948baf770892402166, type: 3}
   - {fileID: 3563172862039459434, guid: 2f9503bdb59c4d948baf770892402166, type: 3}
   - {fileID: -5734759688738492314, guid: 57fe63ae4f019ac4f9e0fc07e58e1193, type: 3}
@@ -210,6 +229,8 @@ SpriteAtlas:
   - motelSign_14
   - motelSign_20
   - squareWindow
+  - books_01_0
+  - books_01_1
   - silhouette_tile_5
   - silhouette_tile_4
   - silhouette_tile_7
@@ -264,6 +285,12 @@ SpriteAtlas:
   - diner_sign_9
   - library_interior_tile
   - blockTile
+  - bookshelf_1
+  - bookshelf_0
+  - bookshelf_3
+  - bookshelf_2
+  - bookshelf_5
+  - bookshelf_4
   - roadTile
   - diner_roof_2
   - diner_roof_1
@@ -273,6 +300,12 @@ SpriteAtlas:
   - pillar_2
   - pillar_0
   - pillar_1
+  - chandelier_3
+  - chandelier_2
+  - chandelier_1
+  - chandelier_0
+  - chandelier_5
+  - chandelier_4
   - longWindow_0
   - longWindow_1
   - brickTile_2
