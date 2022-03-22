@@ -1364,10 +1364,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5203153813974759130, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203153813974759134, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203153814466124923, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5203153814476423616, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 5203153814476423617, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203153814476423617, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 993df657dd1087649ae1e2f97d1f617a, type: 3}
     - target: {fileID: 5203153814476423617, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -1435,6 +1455,30 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5203153814476423616, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
   m_PrefabInstance: {fileID: 170506255}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &170506257 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5974360376925112917, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
+  m_PrefabInstance: {fileID: 170506255}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &170506258
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170506256}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b23c05567efa7ee4da46a065f9b95a1a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &170506259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1468,17 +1512,12 @@ MonoBehaviour:
   - Listen, you're being extremely disrespectful by turning this down!
   - Either let me get you a realtor...
   - OR LEAVE ME ALONE!!!
-  continueObject: {fileID: 170506260}
+  continueObject: {fileID: 170506257}
   hasVisitedLines:
   - Have you considered my offer?
   - ...
   - NO? GO AWAY!
   talkingNoiseName: DinerTalkingNoise
---- !u!1 &170506260 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5203153814466124923, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
-  m_PrefabInstance: {fileID: 170506255}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &171419915
 PrefabInstance:
   m_ObjectHideFlags: 0

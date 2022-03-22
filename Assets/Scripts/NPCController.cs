@@ -7,6 +7,8 @@ using TMPro;
 [RequireComponent(typeof(TextWriter))]
 public class NPCController : MonoBehaviour
 {
+    public GameObject dialogBox;
+
     private TextWriter.TextWriterSingle textWriterSingle;
     private PlayerControls playerControls;
     private NPCDialogEvent dialogEvent;
@@ -40,6 +42,7 @@ public class NPCController : MonoBehaviour
                 else
                 {
                     isTalking = false;
+                    dialogBox.SetActive(false);
                     dialogEvent.OnEventComplete();
                     GameManager.instance.interactionActive = false;
                 }
@@ -50,6 +53,7 @@ public class NPCController : MonoBehaviour
     public void StartDialog()
     {
         isTalking = true;
+        dialogBox.SetActive(true);
         dialogEvent.OnDialogStart(ref textWriterSingle);
     }
 

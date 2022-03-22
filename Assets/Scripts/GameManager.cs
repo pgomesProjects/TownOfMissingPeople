@@ -21,11 +21,10 @@ public class GameManager : MonoBehaviour
     public string playerSpawnName = "StartSpawn";
     [HideInInspector]
     public string playingSongName = "";
-
     [HideInInspector]
-    public bool [] tutorialsViewed = { false };
+    public List<bool> tutorialsViewed = new List<bool>{ false, false, false };
     [HideInInspector]
-    public enum Tutorial { WALKING };
+    public enum Tutorial { WALKING, PAUSE, INTERACTION };
 
     public enum CurrentController { NONE, KEYBOARD, CONTROLLER };
     public CurrentController currentControlScheme = CurrentController.KEYBOARD;
