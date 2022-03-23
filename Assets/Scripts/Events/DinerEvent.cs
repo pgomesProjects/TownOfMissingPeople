@@ -46,6 +46,8 @@ public class DinerEvent : NPCDialogEvent
         if (!hasVisited)
             hasVisited = true;
 
+        GameManager.instance.talkedToNPCs[1] = true;
+
         //Hide the dialog box and continue object
         messageText.gameObject.SetActive(false);
         continueObject.SetActive(false);

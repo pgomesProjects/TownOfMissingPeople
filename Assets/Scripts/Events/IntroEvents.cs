@@ -16,6 +16,11 @@ public class IntroEvents : DialogEvent
         continueTransform = transform.Find("DialogPanel").Find("Dialog").Find("ContinueText").GetComponent<RectTransform>();
     }
 
+    public override void OnDialogStart(ref TextWriter.TextWriterSingle textWriterObj)
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override void CheckEvents(ref TextWriter.TextWriterSingle textWriterObj)
     {
         string message = dialogLines[currentLine];

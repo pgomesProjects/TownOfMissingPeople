@@ -48,6 +48,18 @@ public class SettingsOnStart : MonoBehaviour
 
     private void SetUpFullscreen()
     {
+
+        switch (PlayerPrefs.GetInt("IsWindowed"))
+        {
+            //Fullscreen
+            case 0:
+                Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+                break;
+            //Windowed
+            case 1:
+                Screen.fullScreenMode = FullScreenMode.Windowed;
+                break;
+        }
         GameManager.instance.currentSettings.SetIsFullScreen(Screen.fullScreenMode == FullScreenMode.ExclusiveFullScreen);
         if (GameManager.instance.currentSettings.GetIsFullScreen())
             settingsController.fullScreenToggle.isOn = true;

@@ -21,11 +21,13 @@ public class SettingsController : MonoBehaviour
         if (GameManager.instance.currentSettings.GetIsFullScreen())
         {
             Debug.Log("Game Is Fullscreen");
+            PlayerPrefs.SetInt("IsWindowed", 0);
             Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
         }
         else
         {
             Debug.Log("Game Is Windowed");
+            PlayerPrefs.SetInt("IsWindowed", 1);
             Screen.fullScreenMode = FullScreenMode.Windowed;
         }
     }//end of FullScreenToggle

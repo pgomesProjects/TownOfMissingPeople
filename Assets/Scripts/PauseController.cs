@@ -18,6 +18,9 @@ public class PauseController : MonoBehaviour
 
     void Awake()
     {
+        playerControls = new PlayerControls();
+        playerControls.Player.Pause.performed += _ => TogglePause();
+        playerControls.UI.Cancel.performed += _ => ExitSettings();
         if (instance == null)
         {
             instance = this;
@@ -25,10 +28,6 @@ public class PauseController : MonoBehaviour
         }
         else
             Destroy(gameObject);
-
-        playerControls = new PlayerControls();
-        playerControls.Player.Pause.performed += _ => TogglePause();
-        playerControls.UI.Cancel.performed += _ => ExitSettings();
     }
 
     // Start is called before the first frame update
@@ -36,6 +35,8 @@ public class PauseController : MonoBehaviour
     {
         CallSettingsValues();
         GameManager.instance.Paused = false;
+        GameManager.instance.playingSongName = "InGameMusic";
+        FindObjectOfType<AudioManager>().Play(GameManager.instance.playingSongName, PlayerPrefs.GetFloat("MasterVolume"));
     }
 
     private void OnEnable()
@@ -117,6 +118,7 @@ public class PauseController : MonoBehaviour
     public void ReturnToMain()
     {
         Time.timeScale = 1.0f;
+        GameManager.instance.playingSongName = "TitlescreenMusic";
         LevelManager.instance.LoadScene("TitleScreen");
         Destroy(gameObject);
     }

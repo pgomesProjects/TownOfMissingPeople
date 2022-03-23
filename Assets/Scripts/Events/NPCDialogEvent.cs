@@ -11,11 +11,9 @@ public abstract class NPCDialogEvent : DialogEvent
     public int GetVisitedLinesLength() { return hasVisitedLines.Length; }
     public bool GetHasVisited() { return this.hasVisited; }
 
-    public abstract void OnDialogStart(ref TextWriter.TextWriterSingle textWriterObj);
-
     protected void StartTalkingSound()
     {
-        FindObjectOfType<AudioManager>().Play(talkingNoiseName, 0.4f);
+        FindObjectOfType<AudioManager>().Play(talkingNoiseName, 0.4f * PlayerPrefs.GetFloat("MasterVolume"));
     }
 
     protected void StopTalkingSound()

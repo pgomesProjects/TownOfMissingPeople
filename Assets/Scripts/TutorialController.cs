@@ -6,9 +6,6 @@ using TMPro;
 
 public class TutorialController : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI textObject;
-    [SerializeField] private string keyboardText;
-    [SerializeField] private string controllerText;
     [SerializeField] private GameManager.Tutorial activeTut;
 
     public float disappearTime = 3f;
@@ -18,7 +15,6 @@ public class TutorialController : MonoBehaviour
     {
         if (GameManager.instance.tutorialsViewed[(int)activeTut])
             Destroy(gameObject);
-        ChangeInputText();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -35,23 +31,5 @@ public class TutorialController : MonoBehaviour
         yield return new WaitForSeconds(disappearTime);
         GameManager.instance.tutorialsViewed[(int)activeTut] = true;
         Destroy(gameObject);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        ChangeInputText();
-    }
-
-    private void ChangeInputText()
-    {
-        if (GameManager.instance.currentControlScheme == GameManager.CurrentController.KEYBOARD)
-        {
-            textObject.text = keyboardText;
-        }
-        else if (GameManager.instance.currentControlScheme == GameManager.CurrentController.CONTROLLER)
-        {
-            textObject.text = controllerText;
-        }
     }
 }

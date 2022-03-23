@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public List<bool> tutorialsViewed = new List<bool>{ false, false, false };
     [HideInInspector]
+    public List<bool> talkedToNPCs = new List<bool> { false, false };
+    [HideInInspector]
     public enum Tutorial { WALKING, PAUSE, INTERACTION };
 
     public enum CurrentController { NONE, KEYBOARD, CONTROLLER };

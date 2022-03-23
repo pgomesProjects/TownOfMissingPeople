@@ -28,7 +28,7 @@ public class ParallaxBackground : MonoBehaviour
     void LateUpdate()
     {
         Vector3 deltaMovement = cameraTransform.position - lastCameraPos;
-        transform.position += new Vector3(deltaMovement.x * parallaxMultiplier.x, deltaMovement.y * parallaxMultiplier.y);
+        transform.position -= new Vector3(deltaMovement.x * parallaxMultiplier.x, deltaMovement.y * parallaxMultiplier.y);
         lastCameraPos = cameraTransform.position;
 
         //Horizontal Tiling

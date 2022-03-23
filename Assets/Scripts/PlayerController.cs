@@ -62,21 +62,34 @@ public class PlayerController : MonoBehaviour
 
         if(currentObject != null && !GameManager.instance.interactionActive)
         {
+
             if (currentObject.CompareTag("LevelLoader"))
             {
-                GameManager.instance.interactionActive = true;
-                rb.velocity = new Vector2(0, rb.velocity.y);
-                playerAnim.SetFloat("SpeedX", 0);
-                currentObject.GetComponentInChildren<NewLevelController>().LoadToNextLevel();
+                if (currentObject.GetComponentInChildren<NewLevelController>().isUnlocked)
+                {
+                    GameManager.instance.interactionActive = true;
+                    rb.velocity = new Vector2(0, rb.velocity.y);
+                    playerAnim.SetFloat("SpeedX", 0);
+                    currentObject.GetComponentInChildren<NewLevelController>().LoadToNextLevel();
+                }
             }
 
             if (currentObject.CompareTag("NPC"))
             {
-                Debug.Log("NPC Interaction Start!");
                 GameManager.instance.interactionActive = true;
                 rb.velocity = new Vector2(0, rb.velocity.y);
                 playerAnim.SetFloat("SpeedX", 0);
+                Debug.Log("NPC Interaction Start!");
                 currentObject.GetComponentInChildren<NPCController>().StartDialog();
+            }
+
+            if (currentObject.CompareTag("ExamineItem"))
+            {
+                GameManager.instance.interactionActive = true;
+                rb.velocity = new Vector2(0, rb.velocity.y);
+                playerAnim.SetFloat("SpeedX", 0);
+                Debug.Log("Examination Start!");
+                currentObject.GetComponentInChildren<ExamineController>().StartDialog();
             }
         }
     }

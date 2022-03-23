@@ -17,5 +17,6 @@ abstract public class DialogEvent : MonoBehaviour
     public int GetCurrentLine() { return this.currentLine; }
     public int GetDialogLength() { return this.dialogLines.Length; }
 
+    public abstract void OnDialogStart(ref TextWriter.TextWriterSingle textWriterObj);
     public abstract void OnEventComplete();
 }

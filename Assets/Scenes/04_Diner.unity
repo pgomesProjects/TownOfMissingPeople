@@ -426,7 +426,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5343249372164433417, guid: a4d1e879f199a5948a874d13ffcdca51, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5343249372164433417, guid: a4d1e879f199a5948a874d13ffcdca51, type: 3}
       propertyPath: m_LocalRotation.w
@@ -459,6 +459,14 @@ PrefabInstance:
     - target: {fileID: 5343249372164433418, guid: a4d1e879f199a5948a874d13ffcdca51, type: 3}
       propertyPath: m_Name
       value: NewLevelVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607737333817100913, guid: a4d1e879f199a5948a874d13ffcdca51, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607737333817100913, guid: a4d1e879f199a5948a874d13ffcdca51, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 731468129
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4d1e879f199a5948a874d13ffcdca51, type: 3}
@@ -3014,7 +3022,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 69564816101169484, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -137
+      value: -172
       objectReference: {fileID: 0}
     - target: {fileID: 5203153813974759130, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
       propertyPath: m_SizeDelta.x
@@ -3061,6 +3069,14 @@ PrefabInstance:
       value: NPC
       objectReference: {fileID: 0}
     - target: {fileID: 5203153814476423617, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203153814476423617, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 34b491ee82600e84883fcd0a26fac62f, type: 3}
+    - target: {fileID: 5203153814476423617, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
@@ -3074,7 +3090,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5203153814476423618, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.031
       objectReference: {fileID: 0}
     - target: {fileID: 5203153814476423618, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3152,6 +3168,34 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6963172304515158646, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993404615137299268, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
+      propertyPath: m_text
+      value: <sprite=27>
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993404615137299268, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993404615137299268, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993404615137299268, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993404615137299268, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993404615137299268, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24d74ec925cb5d64e946df74cf3e1567, type: 3}
 --- !u!1 &2026208149 stripped
@@ -3206,6 +3250,25 @@ MonoBehaviour:
   - Keep me updated if you find your loved one.
   - Breaks my heart to see a wanderin' soul.
   talkingNoiseName: DinerTalkingNoise
+--- !u!95 &2026208152
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026208149}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b80688d1f95f7ab419b9f3c62e743a59, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &2066276586
 PrefabInstance:
   m_ObjectHideFlags: 0

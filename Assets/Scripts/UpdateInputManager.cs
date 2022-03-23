@@ -21,6 +21,7 @@ public class UpdateInputManager : MonoBehaviour
     void Start()
     {
         playerInput = GetComponent<PlayerInput>();
+        CheckOnStart(playerInput);
         playerInput.onControlsChanged += OnControlsChanged;
 
         /*        if (GameManager.instance.currentControlScheme == GameManager.CurrentController.NONE)
@@ -91,6 +92,25 @@ public class UpdateInputManager : MonoBehaviour
     private void OnDisable()
     {
         playerControls.Disable();
+    }
+
+    private void CheckOnStart(PlayerInput context)
+    {
+        Debug.Log("Control Scheme At Start: " + context.currentControlScheme);
+        if (context != null && GameManager.instance != null)
+        {
+            if (context.currentControlScheme == "Gamepad")
+            {
+                if (GameManager.instance.currentControlScheme != GameManager.CurrentController.CONTROLLER)
+                {
+                    GameManager.instance.currentControlScheme = GameManager.CurrentController.CONTROLLER;
+                }
+            }
+            else if (GameManager.instance.currentControlScheme != GameManager.CurrentController.KEYBOARD)
+            {
+                GameManager.instance.currentControlScheme = GameManager.CurrentController.KEYBOARD;
+            }
+        }
     }
 
     private void OnControlsChanged(PlayerInput context)
