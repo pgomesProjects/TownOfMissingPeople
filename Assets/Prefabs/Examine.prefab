@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[Enter]'
+  m_text: '[E]'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: be45ef9e49e607a4485ee9a25693d9b6, type: 2}
   m_sharedMaterial: {fileID: 364334592353287732, guid: be45ef9e49e607a4485ee9a25693d9b6, type: 2}
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee425df3c4de8f6459af18e742014711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyboardText: '[Enter]'
+  keyboardText: '[E]'
   controllerText: <sprite=30>
 --- !u!95 &961653352
 Animator:
