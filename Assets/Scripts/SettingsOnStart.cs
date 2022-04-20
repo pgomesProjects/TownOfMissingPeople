@@ -107,6 +107,7 @@ public class SettingsOnStart : MonoBehaviour
 
     private void SetUpQuality()
     {
+        QualitySettings.vSyncCount = 1;
         int currentQuality = QualitySettings.GetQualityLevel();
         settingsController.qualityDropdown.value = currentQuality;
         GameManager.instance.currentSettings.SetGraphicsQuality((GameSettings.GraphicsQuality)currentQuality);

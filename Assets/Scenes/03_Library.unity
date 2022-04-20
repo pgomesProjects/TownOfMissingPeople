@@ -1524,7 +1524,7 @@ MonoBehaviour:
   hasVisitedLines:
   - Have you considered my offer?
   - ...
-  - NO? GO AWAY!
+  - No? Then GO AWAY!
   talkingNoiseName: DinerTalkingNoise
 --- !u!1001 &171419915
 PrefabInstance:
