@@ -3242,7 +3242,7 @@ MonoBehaviour:
   - Say, how long have you been here?
   - ...
   - You're just here for your wife?
-  - Look, if you're lookin' through this whole city, it's gonna be a while.
+  - Look, if you're searchin' through this whole city, it's gonna be a while.
   - Might as well find some place to settle down. The least you can do, yeah?
   continueObject: {fileID: 2026208150}
   hasVisitedLines:
